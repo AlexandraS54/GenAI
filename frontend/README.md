@@ -1,3 +1,20 @@
+# Lancer le Front 
+
+npm start 
+
+# Lancer le Back dans un autre terminal 
+
+python app.py
+
+
+La page d'accueil s'affiche puis la page QuizForm 
+On peut rentrer un fichier et un nbre de questions
+Le back répond et génère des questions dans le terminal mais affiche une erreur 400 non résolu
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
