@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+
+# Flask
+instance/
+*.log
+
+# PyPDF2 temporary files
+*.pdf~
+*.tmp
+
+# Virtual environments
+venv/
+env/
+
+# VSCode
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs and cache
+*.log
+*.out
+*.err
+*.swp
+*.swo
+*.bak
+
+# System files
+Thumbs.db
+desktop.ini
+
+# Dependencies
+*.egg-info/
+*.egg
+*.dist-info/
