@@ -6,7 +6,7 @@ npm start
 
 python app.py
 
-
+# Résultat
 La page d'accueil s'affiche puis la page QuizForm 
 On peut rentrer un fichier et un nbre de questions
 Le back répond et génère des questions dans le terminal mais affiche une erreur 400 non résolu
