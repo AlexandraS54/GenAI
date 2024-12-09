@@ -1,8 +1,7 @@
 // src/components/QuizForm.js
 import React, { useState } from 'react';
 
-const QuizForm = ({ onGoHome }) => {
-    const [numQuestions, setNumQuestions] = useState(5);
+const QuizForm = ({ onGoHome, onChooseQuestions }) => {
     const [file, setFile] = useState(null);
     const [questionType, setQuestionType] = useState('multiple-choice');
 
@@ -12,24 +11,15 @@ const QuizForm = ({ onGoHome }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Quiz soumis :', { numQuestions, file, questionType });
-        // Si nécessaire, tu peux ici envoyer les données au backend
+        console.log('Quiz soumis :', { file, questionType });
+        // Redirige vers la configuration du nombre de questions
+        onChooseQuestions();
     };
 
     return (
         <div className="container">
             <h1>Configure ton quiz</h1>
             <form onSubmit={handleSubmit} className="quiz-form">
-                <label>
-                    Nombre de questions :
-                    <input
-                        type="number"
-                        value={numQuestions}
-                        onChange={(e) => setNumQuestions(e.target.value)}
-                        min="1"
-                    />
-                </label>
-
                 <label>
                     Type de questions :
                     <select value={questionType} onChange={(e) => setQuestionType(e.target.value)}>

@@ -11,6 +11,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative; /* Nécessaire pour positionner l'icône */
 }
 
 /* Titre principal (Quiz Factory) */
@@ -49,23 +50,22 @@ p {
 button {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #ffffff;
-  background: transparent;
-  border: 2px solid #fdadff; /* Bordure en néon violet */
+  color: #2c2c2c; /* Texte noir foncé pour un bon contraste */
+  background: #fdadff; /* Couleur de fond violet clair */
+  border: none; /* Pas de bordure pour simplifier le design */
   padding: 1rem 2rem;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-shadow: 0 0 5px #fdadff, 0 0 10px #fdadff, 0 0 15px #fdadff; /* Néon violet */
-  box-shadow: 0 0 10px #fdadff, 0 0 20px #fdadff, 0 0 30px #fdadff; /* Néon violet autour du bouton */
+  box-shadow: 0 4px 8px rgba(253, 173, 255, 0.4); /* Ombre plus douce */
 }
 
-/* Effet de survol du bouton */
+/* Effet de survol pour les boutons */
 button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px #a7fdff, 0 0 30px #a7fdff, 0 0 40px #a7fdff; /* Passage au néon bleu au survol */  color: #a7fdff; /* Texte bleu quand la souris passe dessus */
-  border-color: #a7fdff; /* Bordure bleue quand la souris passe dessus */
-  text-shadow: 0 0 5px #a7fdff, 0 0 10px #a7fdff, 0 0 15px #a7fdff; /* Texte en bleu néon au survol */
+  background-color: #a78cf0; /* Violet plus foncé au survol */
+  color: #2c2c2c; /* Texte reste noir foncé */
+  box-shadow: 0 6px 12px rgba(167, 140, 240, 0.6); /* Ombre légèrement plus marquée */
+  transform: translateY(-2px); /* Léger effet de soulèvement */
 }
 
 
@@ -102,40 +102,135 @@ button:hover {
 .quiz-form button {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #ffffff;
-  background: transparent;
-  border: 2px solid #fdadff;
+  color: #2c2c2c; /* Texte noir foncé */
+  background: #fdadff; /* Fond violet clair */
+  border: 2px solid #fdadff; /* Bordure violet clair */
   padding: 1rem 2rem;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-shadow: 0 0 5px #fdadff, 0 0 10px #fdadff;
+  text-shadow: 0 0 5px #fdadff, 0 0 10px #fdadff; /* Néo-n effet violet */
   box-shadow: 0 0 10px #fdadff;
 }
 
 .quiz-form button:hover {
   transform: scale(1.1);
   box-shadow: 0 0 20px #a7fdff;
-  color: #a7fdff;
+  color: #2c2c2c; /* Texte reste noir */
   border-color: #a7fdff;
   text-shadow: 0 0 5px #a7fdff, 0 0 10px #a7fdff;
 }
 
+/* Bouton pour retourner à l'accueil */
 .go-home-btn {
   margin-top: 20px;
-  background-color: #fdadff;
-  color: #ffffff;
-  border: 2px solid #fdadff;
+  background-color: #fdadff; /* Fond violet clair */
+  color: #2c2c2c; /* Texte noir foncé */
+  border: none;
   padding: 0.8rem 1.5rem;
   border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(253, 173, 255, 0.4); /* Ombre douce */
 }
 
 .go-home-btn:hover {
+  background-color: #a78cf0; /* Violet plus foncé au survol */
+  color: #2c2c2c; /* Texte reste noir */
+  box-shadow: 0 6px 12px rgba(167, 140, 240, 0.6); /* Ombre plus marquée */
+  transform: translateY(-2px); /* Léger effet de soulèvement */
+}
+
+/* Champ d'entrée pour le formulaire */
+input[type="number"],
+input[type="file"],
+select {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  background-color: #333333;
+  color: #ffffff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* src/components/HomePage.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+/* Icône profil en haut à droite */
+.profile-icon {
+  position: fixed; /* Fixée en haut à droite */
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 100; /* Toujours au-dessus des autres éléments */
+}
+
+.profile-icon-svg {
+  width: 40px; /* Taille de l'icône */
+  height: 40px;
+  fill: #ffffff; /* Couleur blanche pour contraste */
+  transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+/* Effet de survol sur l'icône */
+.profile-icon:hover .profile-icon-svg {
+  transform: scale(1.2); /* Agrandissement au survol */
+  fill: #a7fdff; /* Couleur néon bleue */
+}
+
+/* App.css */
+
+/* Style commun pour les containers */
+.container {
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  background-color: #2c2c2c;
+  border-radius: 10px;
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  max-width: 600px;
+}
+
+/* Champ d'entrée pour le nombre de questions */
+.container label {
+  display: block;
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+.container input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+}
+
+.container button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fdadff;
+  color: #2c2c2c; /* Texte noir foncé */
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.container button:hover {
   background-color: #a7fdff;
-  border-color: #a7fdff;
-  color: #a7fdff;
-  text-shadow: 0 0 5px #a7fdff;
+  color: #2c2c2c; /* Texte noir */
 }
