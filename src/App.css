@@ -1,38 +1,141 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Fond sombre de la page */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #2c2c2c; /* Gris foncé */
+  color: #ffffff; /* Texte clair */
+  text-align: center; /* Centrer le texte sur la page */
+  height: 100vh; /* Prendre toute la hauteur de l'écran */
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
 }
 
-.App-link {
-  color: #61dafb;
+/* Titre principal (Quiz Factory) */
+h1 {
+  font-size: 4rem; /* Très grand titre */
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff; /* Blanc pour un bon contraste */
+  letter-spacing: 3px;
+  text-shadow: 0 0 5px #fdadff, 0 0 10px #fdadff, 0 0 20px #fdadff, 0 0 30px #fdadff; /* Néon violet */
+  margin-bottom: 50px;
+  animation: slide-in 1s ease-out; /* Animation pour faire apparaître le titre */
 }
 
-@keyframes App-logo-spin {
+/* Animation pour faire apparaître le titre */
+@keyframes slide-in {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(-50px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+/* Texte autour du bouton (en néon violet) */
+p {
+  font-size: 1.5rem;
+  color: #e0e0e0;
+  margin-bottom: 30px;
+  text-shadow: 0 0 5px #fdadff, 0 0 10px #fdadff; /* Néon violet */
+}
+
+/* Style du bouton */
+button {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: transparent;
+  border: 2px solid #fdadff; /* Bordure en néon violet */
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px #fdadff, 0 0 10px #fdadff, 0 0 15px #fdadff; /* Néon violet */
+  box-shadow: 0 0 10px #fdadff, 0 0 20px #fdadff, 0 0 30px #fdadff; /* Néon violet autour du bouton */
+}
+
+/* Effet de survol du bouton */
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #a7fdff, 0 0 30px #a7fdff, 0 0 40px #a7fdff; /* Passage au néon bleu au survol */  color: #a7fdff; /* Texte bleu quand la souris passe dessus */
+  border-color: #a7fdff; /* Bordure bleue quand la souris passe dessus */
+  text-shadow: 0 0 5px #a7fdff, 0 0 10px #a7fdff, 0 0 15px #a7fdff; /* Texte en bleu néon au survol */
+}
+
+
+/* Style pour le formulaire de quiz */
+.quiz-form {
+  background-color: #2c2c2c;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  max-width: 500px;
+  margin: 50px auto;
+}
+
+.quiz-form label {
+  display: block;
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  margin-bottom: 1rem;
+}
+
+.quiz-form input,
+.quiz-form select {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  background-color: #333333;
+  color: #ffffff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+.quiz-form button {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: transparent;
+  border: 2px solid #fdadff;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px #fdadff, 0 0 10px #fdadff;
+  box-shadow: 0 0 10px #fdadff;
+}
+
+.quiz-form button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #a7fdff;
+  color: #a7fdff;
+  border-color: #a7fdff;
+  text-shadow: 0 0 5px #a7fdff, 0 0 10px #a7fdff;
+}
+
+.go-home-btn {
+  margin-top: 20px;
+  background-color: #fdadff;
+  color: #ffffff;
+  border: 2px solid #fdadff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.go-home-btn:hover {
+  background-color: #a7fdff;
+  border-color: #a7fdff;
+  color: #a7fdff;
+  text-shadow: 0 0 5px #a7fdff;
 }
