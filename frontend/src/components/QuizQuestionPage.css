@@ -1,0 +1,90 @@
+.quiz-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #000;  /* Changement du fond en noir */
+    color: white;  /* Le texte est maintenant en blanc pour contraster avec le fond noir */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.question {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.options-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.option {
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #333;  /* Fond des options sombre */
+    transition: background-color 0.3s, color 0.3s;
+    color: white;  /* Texte blanc */
+}
+
+.option:hover {
+    background-color: #444;  /* Effet de survol plus sombre */
+}
+
+.option.selected {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.next-btn, .home-btn, .finish-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.next-btn {
+    background-color: #800080;  /* Violet */
+    color: white;
+}
+
+.next-btn:hover {
+    background-color: #6a006a;  /* Violet plus sombre au survol */
+}
+
+.home-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.home-btn:hover {
+    background-color: #5a6268;
+}
+
+.finish-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.finish-btn:hover {
+    background-color: #218838;
+}

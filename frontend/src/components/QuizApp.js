@@ -21,6 +21,11 @@ const QuizApp = () => {
         setCurrentQuestionIndex(0); // Réinitialise l'index
     };
 
+    const handleFinishQuiz = () => {
+        // Logic to finish the quiz (e.g., show results)
+        console.log("Quiz terminé !");
+    };
+
     return (
         <div>
             {quizData === null ? (
@@ -32,8 +37,10 @@ const QuizApp = () => {
                 <QuizQuestionPage
                     question={quizData[currentQuestionIndex]}
                     questionNumber={currentQuestionIndex + 1}
+                    totalQuestions={quizData.length} // Passer le nombre total de questions
                     onNext={handleNextQuestion}
                     onGoHome={handleGoHome}
+                    onFinishQuiz={handleFinishQuiz} // Passer la fonction pour finir le quiz
                 />
             )}
         </div>
