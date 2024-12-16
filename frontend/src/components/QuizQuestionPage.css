@@ -4,8 +4,8 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    background-color: #000; /* Fond sombre */
-    color: white; /* Couleur du texte par défaut */
+    background-color: #000; 
+    color: white; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
@@ -14,7 +14,7 @@
     font-size: 1.5em;
     margin-bottom: 20px;
     font-weight: bold;
-    color: white; /* Couleur douce pour l'énoncé des questions, moins lumineux que le violet */
+    color: white; 
 }
 
 .options-list {
