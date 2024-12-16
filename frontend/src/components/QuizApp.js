@@ -1,50 +1,86 @@
-import React, { useState } from "react";
-import QuizForm from "./QuizForm";
-import QuizQuestionPage from "./QuizQuestionPage";
+import React, { useState } from 'react';
+import HomePage from './components/HomePage';
+import QuizForm from './components/QuizForm';
+import QuizQuestionPage from './components/QuizQuestionPage';
+import QuizResultPage from './components/QuizResultPage';
+import './App.css';
 
-const QuizApp = () => {
-    const [quizData, setQuizData] = useState(null); // Stocke les questions générées
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Index de la question actuelle
+function App() {
+    const [currentPage, setCurrentPage] = useState('home');
+    const [questions, setQuestions] = useState([]);
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [score, setScore] = useState(0);
 
-    const handleChooseQuestions = (data) => {
-        setQuizData(data); // Stocke les questions dans l'état
-    };
+    const fetchQuestions = async (formData) => {
+        try {
+            const response = await fetch('http://127.0.0.1:5000/generate-quiz', {
+                method: 'POST',
+                body: formData,
+            });
 
-    const handleNextQuestion = () => {
-        if (currentQuestionIndex < quizData.length - 1) {
-            setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+            if (response.ok) {
+                const data = await response.json();
+                setQuestions(data);
+                setCurrentPage('quiz');
+            } else {
+                console.error('Erreur lors de la récupération des questions');
+                alert('Erreur lors de la génération des questions.');
+            }
+        } catch (error) {
+            console.error('Erreur réseau', error);
+            alert('Erreur réseau. Veuillez vérifier la connexion.');
         }
     };
 
-    const handleGoHome = () => {
-        setQuizData(null); // Réinitialise l'état du quiz
-        setCurrentQuestionIndex(0); // Réinitialise l'index
+    const handleNextQuestion = () => {
+        if (currentQuestionIndex < questions.length - 1) {
+            setCurrentQuestionIndex(currentQuestionIndex + 1);
+        }
     };
 
     const handleFinishQuiz = () => {
-        // Logic to finish the quiz (e.g., show results)
-        console.log("Quiz terminé !");
+        const calculatedScore = questions.reduce((acc, question) => {
+            return acc + (question.selectedOption === question.correctAnswer ? 1 : 0);
+        }, 0);
+        setScore(calculatedScore);
+        setCurrentPage('result');
+    };
+
+    const handleGoHome = () => {
+        setCurrentPage('home');
+        setCurrentQuestionIndex(0);
+        setQuestions([]);
+        setScore(0);
     };
 
     return (
         <div>
-            {quizData === null ? (
+            {currentPage === 'home' && <HomePage onCreateQuiz={() => setCurrentPage('quizForm')} />}
+            {currentPage === 'quizForm' && (
                 <QuizForm
                     onGoHome={handleGoHome}
-                    onChooseQuestions={handleChooseQuestions}
+                    onChooseQuestions={(formData) => fetchQuestions(formData)}
                 />
-            ) : (
+            )}
+            {currentPage === 'quiz' && questions.length > 0 && (
                 <QuizQuestionPage
-                    question={quizData[currentQuestionIndex]}
+                    question={questions[currentQuestionIndex]}
                     questionNumber={currentQuestionIndex + 1}
-                    totalQuestions={quizData.length} // Passer le nombre total de questions
+                    totalQuestions={questions.length}
                     onNext={handleNextQuestion}
+                    onFinishQuiz={handleFinishQuiz}
                     onGoHome={handleGoHome}
-                    onFinishQuiz={handleFinishQuiz} // Passer la fonction pour finir le quiz
+                />
+            )}
+            {currentPage === 'result' && (
+                <QuizResultPage
+                    score={score}
+                    questions={questions}
+                    onGoHome={handleGoHome}
                 />
             )}
         </div>
     );
-};
+}
 
-export default QuizApp;
+export default App;

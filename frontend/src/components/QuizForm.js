@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import './QuizForm.css'; // Assurez-vous d'avoir le bon CSS
 
-const QuizForm = ({ onGoHome, onChooseQuestions }) => {
+const QuizForm = ({ onGoHome, onChooseQuestions, isLoading }) => {
     const [file, setFile] = useState(null);
     const [numQuestions, setNumQuestions] = useState(5);
 
@@ -17,38 +18,47 @@ const QuizForm = ({ onGoHome, onChooseQuestions }) => {
         }
 
         const formData = new FormData();
-        formData.append('file', file); // Ajout du fichier
-        formData.append('num_questions', numQuestions); // Ajout du nombre de questions
+        formData.append('file', file);
+        formData.append('num_questions', numQuestions);
 
-        onChooseQuestions(formData); // Envoie le FormData à `fetchQuestions`
+        onChooseQuestions(formData); // Appeler la fonction pour générer les questions
     };
 
     return (
         <div>
-            <h1>Configure ton quiz</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Nombre de questions :
-                    <input
-                        type="number"
-                        value={numQuestions}
-                        onChange={(e) => setNumQuestions(e.target.value)}
-                        min="1"
-                    />
-                </label>
+            {isLoading ? (
+                <div className="loading-screen">
+                    <div className="spinner"></div>
+                    <p>Génération des questions en cours...</p>
+                </div>
+            ) : (
+                <div>
+                    <h1>Configure ton quiz</h1>
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            Nombre de questions :
+                            <input
+                                type="number"
+                                value={numQuestions}
+                                onChange={(e) => setNumQuestions(e.target.value)}
+                                min="1"
+                            />
+                        </label>
 
-                <label>
-                    Fichier à importer :
-                    <input
-                        type="file"
-                        onChange={handleFileChange}
-                        accept=".pdf"
-                    />
-                </label>
+                        <label>
+                            Fichier à importer :
+                            <input
+                                type="file"
+                                onChange={handleFileChange}
+                                accept=".pdf"
+                            />
+                        </label>
 
-                <button type="submit">Générer le quiz</button>
-            </form>
-            <button onClick={onGoHome}>Retour à l'accueil</button>
+                        <button type="submit">Générer le quiz</button>
+                    </form>
+                    <button onClick={onGoHome}>Retour à l'accueil</button>
+                </div>
+            )}
         </div>
     );
 };

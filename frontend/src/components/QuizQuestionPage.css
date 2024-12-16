@@ -4,8 +4,8 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    background-color: #000;  /* Changement du fond en noir */
-    color: white;  /* Le texte est maintenant en blanc pour contraster avec le fond noir */
+    background-color: #000; /* Fond sombre */
+    color: white; /* Couleur du texte par défaut */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
@@ -14,6 +14,7 @@
     font-size: 1.5em;
     margin-bottom: 20px;
     font-weight: bold;
+    color: white; /* Couleur douce pour l'énoncé des questions, moins lumineux que le violet */
 }
 
 .options-list {
@@ -27,17 +28,17 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #333;  /* Fond des options sombre */
+    background-color: #333;
     transition: background-color 0.3s, color 0.3s;
-    color: white;  /* Texte blanc */
+    color: white;
 }
 
 .option:hover {
-    background-color: #444;  /* Effet de survol plus sombre */
+    background-color: #444;
 }
 
 .option.selected {
-    background-color: #007bff;
+    background-color: #6c2969;
     color: white;
     font-weight: bold;
 }
@@ -63,12 +64,12 @@
 }
 
 .next-btn {
-    background-color: #800080;  /* Violet */
+    background-color: #800080;
     color: white;
 }
 
 .next-btn:hover {
-    background-color: #6a006a;  /* Violet plus sombre au survol */
+    background-color: #6a006a;
 }
 
 .home-btn {
@@ -81,10 +82,10 @@
 }
 
 .finish-btn {
-    background-color: #28a745;
+    background-color: #800080;
     color: white;
 }
 
 .finish-btn:hover {
-    background-color: #218838;
+    background-color: #6a006a;
 }

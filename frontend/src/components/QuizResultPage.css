@@ -1,0 +1,101 @@
+/* QuizResultPage.css */
+
+.result-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #1a1a1a;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    color: #ff00ff;
+}
+
+.questions-review {
+    margin-top: 20px;
+}
+
+.question-review {
+    margin-bottom: 20px;
+    background-color: #333;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.options-list {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+}
+
+.option {
+    padding: 10px 20px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #444;
+}
+
+/* Option correcte (bonne réponse) */
+.option.correct {
+    background-color: green;
+    border-color: darkgreen;
+}
+
+/* Option incorrecte (réponse fausse) */
+.option.incorrect {
+    background-color: red;
+    border-color: darkred;
+}
+
+
+/* Met en surbrillance la bonne réponse même si elle n'a pas été sélectionnée */
+.option.correct.selected {
+    background-color: #388e3c; /* Pour que la bonne réponse apparaisse en vert si elle a été sélectionnée */
+}
+
+/* Option incorrecte si l'utilisateur a fait une mauvaise sélection */
+.option.incorrect.selected {
+    background-color: red; /* Réponse incorrecte en rouge */
+    border-color: darkred;
+}
+
+/* Mettre en surbrillance la bonne réponse même si l'utilisateur ne l'a pas sélectionnée */
+.option.correct:not(.selected) {
+    background-color: green; /* Bonne réponse en vert si elle n'a pas été sélectionnée */
+    border-color: darkgreen;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.result-container {
+    max-height: 80vh; /* Limite la hauteur à 80% de la hauteur de la fenêtre */
+    overflow-y: auto; /* Ajoute une barre de défilement verticale si le contenu dépasse la hauteur */
+    padding: 20px;
+}

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import './QuizQuestionPage.css'; // Importer le fichier CSS pour la mise en forme
+import './QuizQuestionPage.css';
 
 const QuizQuestionPage = ({ question, questionNumber, totalQuestions, onNext, onGoHome, onFinishQuiz }) => {
-    const [selectedOption, setSelectedOption] = useState(null);
+    const [selectedOption, setSelectedOption] = useState(question.selectedOption || null);
     const [error, setError] = useState('');
 
     const handleSelectOption = (option) => {
         setSelectedOption(option);
+        question.selectedOption = option;
     };
 
     const handleNext = () => {
@@ -14,8 +15,8 @@ const QuizQuestionPage = ({ question, questionNumber, totalQuestions, onNext, on
             setError('Veuillez sélectionner une réponse.');
         } else {
             setError('');
-            onNext(); // Passer à la question suivante
-            setSelectedOption(null); // Réinitialiser la sélection pour la prochaine question
+            onNext();
+            setSelectedOption(null);
         }
     };
 
@@ -24,13 +25,13 @@ const QuizQuestionPage = ({ question, questionNumber, totalQuestions, onNext, on
             setError('Veuillez sélectionner une réponse avant de terminer.');
         } else {
             setError('');
-            onFinishQuiz(); // Appeler la fonction pour finir le quiz
+            onFinishQuiz();
         }
     };
 
     return (
         <div className="quiz-container">
-            <h1>Question {questionNumber} / {totalQuestions}</h1> {/* Afficher le numéro de la question */}
+            <h1>Question {questionNumber} / {totalQuestions}</h1>
             <p className="question">{question.question}</p>
             {error && <p className="error">{error}</p>}
             <ul className="options-list">
@@ -45,10 +46,10 @@ const QuizQuestionPage = ({ question, questionNumber, totalQuestions, onNext, on
                 ))}
             </ul>
             <div className="buttons">
-                {questionNumber === totalQuestions ? (  // Si on est sur la dernière question
+                {questionNumber === totalQuestions ? (
                     <button className="finish-btn" onClick={handleFinish}>Terminer le quiz</button>
                 ) : (
-                    <button className="next-btn" onClick={handleNext}>Question suivante</button> // Sinon, afficher "Question suivante"
+                    <button className="next-btn" onClick={handleNext}>Question suivante</button>
                 )}
                 <button className="home-btn" onClick={onGoHome}>Retour à l'accueil</button>
             </div>
